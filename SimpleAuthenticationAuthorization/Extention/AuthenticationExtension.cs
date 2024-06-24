@@ -54,7 +54,7 @@ public static class AuthenticationExtension
             .AddRoles<IdentityRole>()
             .AddSignInManager()
             .AddEntityFrameworkStores<AuthDbContext>();
-        
+        builder.Services.AddAuthorization();
         return builder;
     }
 

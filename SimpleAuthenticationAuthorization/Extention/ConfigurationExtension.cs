@@ -1,6 +1,7 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using SimpleAuthenticationAuthorization.Database;
+using SimpleAuthenticationAuthorization.Database.Repository;
 using SimpleAuthenticationAuthorization.Services;
 
 namespace SimpleAuthenticationAuthorization.Extention;
@@ -16,6 +17,7 @@ public static class ConfigurationExtension
             npgSqlOption.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
         }));
         services.AddScoped<IdentityService>();
+        services.AddScoped<ProductRepository>();
         return services;
     }
     

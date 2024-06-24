@@ -1,7 +1,5 @@
 using System.ComponentModel;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.JsonWebTokens;
@@ -33,11 +31,10 @@ public class Accounts(
         IdentityUser identityUser = new()
         {
             UserName = user.Email,
-            Email = user.Email,
-            PasswordHash = Convert.ToBase64String(SHA256.HashData(Encoding.UTF8.GetBytes(user.Password)))
+            Email = user.Email
         };
 
-        await userManager.CreateAsync(identityUser);
+        await userManager.CreateAsync(identityUser, user.Password);
         // identityUser.PasswordHash = user.Password;
         // await userManager.UpdateAsync(identityUser);
 
