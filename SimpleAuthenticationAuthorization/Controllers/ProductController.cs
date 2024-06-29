@@ -11,7 +11,7 @@ namespace SimpleAuthenticationAuthorization.Controllers;
 [Route("api/[controller]")]
 public class ProductController(ProductRepository productRepository) : ControllerBase
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,User")]
     [HttpGet]
     public async Task<IActionResult> GetProducts()
     {
